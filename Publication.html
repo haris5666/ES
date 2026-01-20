@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research Publications | Muhammad Haris Saleem</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+<style>
+/* ================= RESET & BASE ================= */
+* { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  height: 100%;
+  font-family: 'Inter', sans-serif;
+  overflow: hidden;
+  background: #020408;
+}
+
+/* ================= GALAXY ANIMATION ================= */
+@keyframes galaxyMove {
+  from { background-position: 0 0, 0 0, 0 0, 0 0, 0 0; }
+  to   { background-position: 0 0, 0 0, -600px 400px, 800px -600px, 0 0; }
+}
+
+.galaxy-active {
+  background:
+    radial-gradient(circle at 15% 25%, rgba(120,140,255,0.2), transparent 40%),
+    radial-gradient(circle at 80% 65%, rgba(255,120,200,0.15), transparent 45%),
+    radial-gradient(1px 1px at 20% 30%, rgba(255,255,255,0.4), transparent),
+    radial-gradient(1px 1px at 70% 40%, rgba(255,255,255,0.2), transparent),
+    linear-gradient(#0a0e1f, #020408);
+  background-size: cover, cover, 400px 400px, 500px 500px, cover;
+  animation: galaxyMove 120s linear infinite;
+}
+
+/* ================= LAYOUT ================= */
+.layout { display: flex; width: 100vw; height: 100vh; position: relative; z-index: 2; }
+
+/* ================= LEFT SIDE: PREMIUM BRANDING ================= */
+.left {
+  width: 25%;
+  min-width: 320px;
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(15px);
+  border-right: 1px solid rgba(255,255,255,0.1);
+  color: white;
+}
+
+.avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #8ab4f8;
+  box-shadow: 0 0 30px rgba(138, 180, 248, 0.3);
+  margin-bottom: 25px;
+  transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.avatar:hover { transform: scale(1.1) rotate(-3deg); }
+
+.left h1 {
+  font-size: 38px;
+  font-weight: 800;
+  letter-spacing: -1.5px;
+  background: linear-gradient(180deg, #ffffff 30%, #8ab4f8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0;
+  filter: drop-shadow(0 2px 10px rgba(138, 180, 248, 0.3));
+}
+
+.left p { 
+  font-size: 11px; 
+  color: #8ab4f8; 
+  margin-top: 15px; 
+  letter-spacing: 4px; 
+  text-transform: uppercase; 
+  font-weight: 700;
+  opacity: 0.9;
+}
+
+
+
+
+
+/* ================= CARDS & FORMATTING ================= */
+h2 {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  color: #1a73e8;
+  margin-bottom: 50px;
+  border-left: 4px solid #1a73e8;
+  padding-left: 15px;
+}
+.galaxy-mode h2 { color: #8ab4f8; border-color: #8ab4f8; }
+
+.card {
+  background: #fbfbfb;
+  border: 1px solid #eee;
+  padding: 40px;
+  border-radius: 24px;
+  margin-bottom: 25px;
+  transition: all 0.5s ease;
+  opacity: 0;
+  transform: translateY(40px);
+}
+.card.visible { opacity: 1; transform: translateY(0); }
+
+.galaxy-mode .card {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  border-color: #1a73e8;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.05);
+}
+
+.book-badge {
+  font-size: 10px;
+  font-weight: 900;
+  color: #1a73e8;
+  background: rgba(26, 115, 232, 0.1);
+  padding: 5px 12px;
+  border-radius: 50px;
+  margin-bottom: 20px;
+  display: inline-block;
+}
+.galaxy-mode .book-badge { color: #8ab4f8; background: rgba(138, 180, 248, 0.15); }
+
+h3 { font-size: 24px; margin: 0 0 10px 0; color: #111; font-weight: 700; }
+.galaxy-mode h3 { color: #fff; }
+
+p { font-size: 16px; line-height: 1.8; color: #444; margin: 0; }
+.galaxy-mode p { color: #b0b3b8; }
+
+ul { margin-top: 20px; padding-left: 20px; }
+li { margin-bottom: 10px; color: #555; font-size: 15px; }
+.galaxy-mode li { color: #a0a6b5; }
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 1000px) {
+  .left { width: 100%; height: auto; border-right: none; position: relative; }
+  .layout { flex-direction: column; overflow-y: auto; }
+  .right { padding: 50px 25px; }
+}
+
+
+
+
+
+
+/* ================= NAVIGATION ================= */
+.nav {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-start;
+  padding-left: 20px;
+}
+
+.nav a {
+  text-decoration: none;
+  color: #8ab4f8;
+  font-weight: 700;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  opacity: 0.6;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.nav a::before {
+  content: "";
+  position: absolute;
+  left: -35px;
+  width: 0;
+  height: 2px;
+  background: #8ab4f8;
+  box-shadow: 0 0 12px #8ab4f8;
+  transition: width 0.4s ease;
+}
+
+.nav a:hover {
+  opacity: 1;
+  color: #fff;
+  transform: translateX(15px);
+  letter-spacing: 3.5px;
+}
+
+.nav a:hover::before { width: 25px; }
+
+/* ================= SOCIAL ZOOM ================= */
+.social-links {
+  margin-top: 50px;
+  display: flex;
+  gap: 25px;
+}
+
+.social-links a {
+  color: #8ab4f8;
+  font-size: 24px;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.3s ease;
+  opacity: 0;
+  animation: iconPop 0.6s forwards;
+}
+
+.social-links a:hover {
+  color: #fff;
+  transform: scale(1.4);
+  text-shadow: 0 0 15px rgba(138, 180, 248, 0.9);
+}
+
+@keyframes iconPop { to { opacity: 0.6; transform: translateY(0); } }
+
+/* ================= RIGHT SIDE: PREMIUM CARDS ================= */
+.right-wrapper { 
+  flex: 1; 
+  overflow-y: auto; 
+  background: #ffffff; 
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.galaxy-mode .right-wrapper { background: transparent; }
+
+.right { padding: 80px 10%; }
+
+h2 {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  color: #1a73e8;
+  margin-bottom: 50px;
+  border-left: 4px solid #1a73e8;
+  padding-left: 15px;
+}
+.galaxy-mode h2 { color: #8ab4f8; border-color: #8ab4f8; }
+
+.card {
+  background: #fbfbfb;
+  border: 1px solid #eee;
+  padding: 45px;
+  border-radius: 24px;
+  margin-bottom: 30px;
+  transition: all 0.5s ease;
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.card.visible { opacity: 1; transform: translateY(0); }
+
+.galaxy-mode .card {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.05);
+}
+
+.pub-badge {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #1a73e8;
+  background: rgba(26, 115, 232, 0.1);
+  padding: 6px 14px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  display: inline-block;
+}
+
+.galaxy-mode .pub-badge { color: #8ab4f8; background: rgba(138, 180, 248, 0.15); border: 1px solid rgba(138, 180, 248, 0.2); }
+
+h3 { 
+  font-size: 26px; 
+  line-height: 1.3;
+  margin: 0 0 15px 0; 
+  color: #111; 
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.galaxy-mode h3 { 
+  background: linear-gradient(to right, #fff, #8ab4f8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.authors { font-size: 15px; line-height: 1.6; color: #666; margin-bottom: 10px; }
+.galaxy-mode .authors { color: #a0a6b5; }
+.authors strong { color: #111; }
+.galaxy-mode .authors strong { color: #fff; }
+
+.journal-info { font-size: 14px; font-weight: 600; color: #1a73e8; margin-top: 15px; }
+.galaxy-mode .journal-info { color: #8ab4f8; opacity: 0.8; }
+
+/* ================= THEME TOGGLE ================= */
+.controls { position: fixed; top: 30px; right: 40px; z-index: 100; }
+.control-btn {
+  cursor: pointer; font-size: 24px; 
+  background: white; width: 55px; height: 55px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%; box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  transition: 0.4s;
+}
+.galaxy-mode .control-btn { background: rgba(255,255,255,0.1); color: #fff; }
+
+@media (max-width: 1000px) {
+  .left { width: 100%; height: auto; border-right: none; position: relative; }
+  .layout { flex-direction: column; overflow-y: auto; }
+  .right { padding: 50px 25px; }
+}
+</style>
+</head>
+
+<body id="body" class="galaxy-active">
+
+<div class="controls">
+  <div class="control-btn" onclick="toggleTheme()">🌓</div>
+</div>
+
+<div class="layout">
+  <aside class="left">
+    <img src="Hariss.jpg" alt="Muhammad Haris Saleem" class="avatar">
+    <h1>Research</h1>
+    <p>Academic Portfolio</p>
+    
+    <nav class="nav">
+        <a href="index.html">← Back to Profile</a>
+        <a href="#active">Active Reviews</a>
+        <a href="#published">Published Work</a>
+    </nav>
+
+    <div class="social-links">
+    <a href="https://www.linkedin.com/in/haris-saleem-a50526165/" target="_blank" style="--i:1" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+    <a href="#" style="--i:2" title="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+    <a href="#" style="--i:3" title="GitHub"><i class="fa-brands fa-github"></i></a>
+    <a href="#" style="--i:4" title="Scholar"><i class="fa-solid fa-graduation-cap"></i></a>
+</div>
+  </aside>
+
+  <div class="right-wrapper">
+    <main class="right">
+      
+      <section id="active">
+        <h2>Active Research & Reviews</h2>
+
+        <div class="card reveal">
+          <span class="pub-badge"> Transactions of the Institute of Measurement and Control (Sage)</span>
+          <h3>Design of a Highly Reliable Fault-Tolerant Unified Power Flow Controller for Enhanced Voltage
+Regulation </h3>
+          <p class="authors"><strong>Muhammad Haris Saleem</strong>, Arslan Ahmed Amin, Zuhair A. Alqarni</p>
+          <p class="journal-info">Status: Submitted 2026 | Publisher: Sage </p>
+        </div>
+
+        <div class="card reveal">
+          <span class="pub-badge">Robotics and Autonomous Systems (Elsevier)</span>
+          <h3>Application of Advanced Fault-Tolerant Control Techniques in Quadcopter Design for Increased Reliability: A Review</h3>
+          <p class="authors">Arslan Ahmed Amin, Muhammad Irfan, Saba Waseem, Muazzam Ghafoor, <strong>Muhammad Haris Saleem</strong></p>
+          <p class="journal-info">Status: Submitted 2026 | Field: Autonomous Systems</p>
+        </div>
+
+        <div class="card reveal">
+          <span class="pub-badge">IET Power Electronics (Wiley)</span>
+          <h3>Intelligent Fault Diagnosis and Fault-Tolerant Control in Static and Dynamic Wireless Power Transfer for Electric Vehicles: A Comprehensive Review</h3>
+          <p class="authors"><strong>Muhammad Haris Saleem</strong>, Arslan Ahmed Amin, Zuhair A. Alqarni</p>
+          <p class="journal-info">Status: Submitted 2025 | Publisher: Sage / IET</p>
+        </div>
+
+        <div class="card reveal">
+          <span class="pub-badge">Energy Science & Engineering (Wiley)</span>
+          <h3>A Comprehensive Review of Control Techniques Utilized in Vehicle-to-Grid Battery Systems for Stability Improvement in Microgrids</h3>
+          <p class="authors"><strong>Muhammad Haris Saleem</strong>, Arslan Aslam, Arslan Ahmed Amin, Muhammad Irfan, Habib Ullah Manzoor</p>
+          <p class="journal-info">Status: Submitted 2025 | Subject: Microgrid Stability</p>
+        </div>
+
+        
+
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<script>
+function toggleTheme() {
+  document.getElementById('body').classList.toggle('galaxy-mode');
+}
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, index) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => {
+        entry.target.classList.add('visible');
+      }, index * 100);
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal, .card').forEach((el) => {
+  observer.observe(el);
+});
+</script>
+
+</body>
+</html>
